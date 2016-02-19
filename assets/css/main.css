@@ -1,0 +1,39 @@
+*{
+	box-sizing: border-box;
+}
+
+#pizza-builder {
+	width:100%;
+	max-width:960px;
+	margin: 0 auto;
+	border:5px solid black;
+	display: flex;
+    flex-wrap: wrap;
+}
+
+#pizza-image {
+	border: 5px solid red;
+	max-width:600px;
+	position:relative;
+	width:50%;
+	
+}
+
+#pizza-form {
+	width:50%;
+	border:5px green;
+}
+
+
+
+.pizza2{
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+img {
+	width:100%;
+	height:auto;
+	display:block;
+}
