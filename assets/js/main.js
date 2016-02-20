@@ -1,28 +1,89 @@
-var ingredients = [
+var pizzaIngredients = [
+  //Meat
 	{
-		name: "BBQ Sauce (top)",
+		name: "Pepperoni",
+		type: "meat",
+		imgId: "pepperoniImg",
+		checkBoxId: "pepperoniCheck",
+	},
+	{
+		name: "Shrimp",
+		type: "meat",
+		imgId: "shrimpImg",
+		checkBoxId: "shrimpCheck",
+	},
+  //Non-Meat Toppings
+	{
+		name: "Tomatoes",
+		type: "non-meat-topping",
+		imgId: "tomatoesImg",
+		checkBoxId: "tomatoesCheck",
+	},
+	{
+		name: "Spinach",
+		type: "non-meat-topping",
+		imgId: "spinachImg",
+		checkBoxId: "spinachCheck",
+	},
+	{
+		name: "Mushrooms",
+		type: "non-meat-topping",
+		imgId: "mushroomsImg",
+		checkBoxId: "mushroomsCheck",
+	},	
+	{
+		name: "Green Peppers",
+		type: "non-meat-topping",
+		imgId: "greenPeppersImg",
+		checkBoxId: "greenPeppersCheck",
+	},
+	{
+		name: "Red Peppers",
+		type: "non-meat-topping",
+		imgId: "redPeppersImg",
+		checkBoxId: "redPeppersCheck",
+	},
+	{
+		name: "Onions",
+		type: "non-meat-topping",
+		imgId: "onionsImg",
+		checkBoxId: "onionsCheck",
+	},	
+	{
+		name: "Black Olives",
+		type: "non-meat-topping",
+		imgId: "blackOlivesImg",
+		checkBoxId: "blackOlivesCheck",
+	},	
+
+  //Dressings
+	{
+		name: "BBQ Sauce",
+		type: "dressing",
 		imgId: "bbqTopSauceImg",
 		checkBoxId: "bbqTopSauceCheck",
 	},
 	{
 		name: "Hot Sauce",
+		type: "dressing",
 		imgId: "hotSauceImg",
 		checkBoxId: "hotSauceCheck",
 	},
 	{
 		name: "Ranch Dressing",
+		type: "dressing",
 		imgId: "ranchDressingImg",
 		checkBoxId: "ranchDressingCheck",
 	},
 	
 ];
 
-for (var i = 0; i<ingredients.length;i++){
+for (var i = 0; i<pizzaIngredients.length;i++){
 	(function(j){
-		var imgId = ingredients[j].imgId;
+		var imgId = pizzaIngredients[j].imgId;
 		var imgDiv = document.getElementById(imgId);
 
-		var checkBoxId = ingredients[j].checkBoxId;
+		var checkBoxId = pizzaIngredients[j].checkBoxId;
 		var checkBoxDiv = document.getElementById(checkBoxId);
 		
 		checkBoxDiv.addEventListener("click",function() {
@@ -37,6 +98,8 @@ for (var i = 0; i<ingredients.length;i++){
 	}(i));
 	//Above is a closure. Without one, the checkboxes would only be refering to the last i in the for-loop.
 }
+
+
 
 //Old Workable code
 // $("#bbqTopSauceCheck").click(function(){
