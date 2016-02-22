@@ -220,11 +220,11 @@ for (var i = 0; i<pizzaIngredients.toppings.length;i++){ //i starts at 3 because
 
 function calculateTotalPrice() {
 	totalPrice=0;
-	for (var i = 0; i<pizzaIngredients.length;i++){
-		var inputId = pizzaIngredients[i].inputId;
+	for (var i = 0; i<pizzaIngredients.toppings.length;i++){
+		var inputId = pizzaIngredients.toppings[i].inputId;
 		var checkBoxDiv = document.getElementById(inputId);
 		if (checkBoxDiv.checked) {
-			totalPrice2 +=pizzaIngredients[i].price;
+			totalPrice +=pizzaIngredients.toppings[i].price;
 		}
 	}
 }
@@ -241,9 +241,8 @@ function uncheckOnRefresh() {
 	 	document.getElementById('tomatoSauceCheck').checked="checked"; */
 }
 
-
 uncheckOnRefresh();
 //Above is needed for certain browsers to work.
 /*Thomas's Note: Without this code, if I checked off a bunch of ingredients and refreshed the page in firefox, the checkboxes would still be checked
 and the images would be gone. Most divs holding images have the display-off class which makes their display none on refresh. When the user clicks a check box, the display-off
-class is removed. Without this code, that won't happen. */
+class is removed. Without this code, that won't happen in firefox. */
