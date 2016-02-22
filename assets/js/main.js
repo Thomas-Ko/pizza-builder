@@ -6,21 +6,21 @@ var pizzaIngredients = [
 		name: "Tomato Sauce",
 		type: "sauce",
 		imgId: "tomatoSauceImg",
-		checkBoxId: "tomatoSauceCheck",
+		inputId: "tomatoSauceCheck",
 		price:0,
 	},
 	{
 		name: "BBQ Sauce",
 		type: "sauce",
 		imgId: "bbqSauceImg",
-		checkBoxId: "bbqSauceCheck",
+		inputId: "bbqSauceCheck",
 		price:0,
 	},
 	{
 		name: "Pesto Sauce",
 		type: "sauce",
 		imgId: "pestoSauceImg",
-		checkBoxId: "pestoSauceCheck",
+		inputId: "pestoSauceCheck",
 		price:0,
 	},
   //Meat
@@ -28,49 +28,49 @@ var pizzaIngredients = [
 		name: "Pepperoni",
 		type: "meat",
 		imgId: "pepperoniImg",
-		checkBoxId: "pepperoniCheck",
+		inputId: "pepperoniCheck",
 		price: 1.5,
 	},
 	{
 		name: "Shrimp",
 		type: "meat",
 		imgId: "shrimpImg",
-		checkBoxId: "shrimpCheck",
+		inputId: "shrimpCheck",
 		price:3.5,
 	},
 	{
 		name: "Chicken",
 		type: "meat",
 		imgId: "chickenImg",
-		checkBoxId: "chickenCheck",
+		inputId: "chickenCheck",
 		price: 1.5,
 	},
 	{
 		name: "Sausage",
 		type: "meat",
 		imgId: "sausageImg",
-		checkBoxId: "sausageCheck",
+		inputId: "sausageCheck",
 		price: 1.5,
 	},
 	{
 		name: "Ham",
 		type: "meat",
 		imgId: "hamImg",
-		checkBoxId: "hamCheck",
+		inputId: "hamCheck",
 		price: 1.5,
 	},
 	{
 		name: "Steak",
 		type: "meat",
 		imgId: "steakImg",
-		checkBoxId: "steakCheck",
+		inputId: "steakCheck",
 		price: 2.5,
 	},
 	{
 		name: "Bacon",
 		type: "meat",
 		imgId: "baconImg",
-		checkBoxId: "baconCheck",
+		inputId: "baconCheck",
 		price: 1.5,
 	},
   //Non-Meat Toppings
@@ -78,63 +78,63 @@ var pizzaIngredients = [
 		name: "Tomatoes",
 		type: "non-meat-topping",
 		imgId: "tomatoesImg",
-		checkBoxId: "tomatoesCheck",
+		inputId: "tomatoesCheck",
 		price: 1,
 	},
 	{
 		name: "Spinach",
 		type: "non-meat-topping",
 		imgId: "spinachImg",
-		checkBoxId: "spinachCheck",
+		inputId: "spinachCheck",
 		price: 1
 	},
 	{
 		name: "Mushrooms",
 		type: "non-meat-topping",
 		imgId: "mushroomsImg",
-		checkBoxId: "mushroomsCheck",
+		inputId: "mushroomsCheck",
 		price: 1.5,
 	},	
 	{
 		name: "Green Peppers",
 		type: "non-meat-topping",
 		imgId: "greenPeppersImg",
-		checkBoxId: "greenPeppersCheck",
+		inputId: "greenPeppersCheck",
 		price: 1,
 	},
 	{
 		name: "Red Peppers",
 		type: "non-meat-topping",
 		imgId: "redPeppersImg",
-		checkBoxId: "redPeppersCheck",
+		inputId: "redPeppersCheck",
 		price: 1,
 	},
 	{
 		name: "Onions",
 		type: "non-meat-topping",
 		imgId: "onionsImg",
-		checkBoxId: "onionsCheck",
+		inputId: "onionsCheck",
 		price: 1
 	},	
 	{
 		name: "Black Olives",
 		type: "non-meat-topping",
 		imgId: "blackOlivesImg",
-		checkBoxId: "blackOlivesCheck",
+		inputId: "blackOlivesCheck",
 		price: 1
 	},	
 	{
 		name: "Corn",
 		type: "non-meat-topping",
 		imgId: "cornImg",
-		checkBoxId: "cornCheck",
+		inputId: "cornCheck",
 		price: 1,
 	},	
 	{
 		name: "Pineapples",
 		type: "non-meat-topping",
 		imgId: "pineapplesImg",
-		checkBoxId: "pineapplesCheck",
+		inputId: "pineapplesCheck",
 		price: 1,
 	},	
 
@@ -143,21 +143,21 @@ var pizzaIngredients = [
 		name: "BBQ Sauce",
 		type: "dressing",
 		imgId: "bbqTopSauceImg",
-		checkBoxId: "bbqTopSauceCheck",
+		inputId: "bbqTopSauceCheck",
 		price: 0.75,
 	},
 	{
 		name: "Hot Sauce",
 		type: "dressing",
 		imgId: "hotSauceImg",
-		checkBoxId: "hotSauceCheck",
+		inputId: "hotSauceCheck",
 		price: 0.75,
 	},
 	{
 		name: "Ranch Dressing",
 		type: "dressing",
 		imgId: "ranchDressingImg",
-		checkBoxId: "ranchDressingCheck",
+		inputId: "ranchDressingCheck",
 		price: 0.75,
 	},
 	
@@ -165,21 +165,34 @@ var pizzaIngredients = [
 
 
 // function checkSauces() {
-// 	if(($(".sauces").hasClass("display-off"))){
-// 			$(".sauces").addClass("display-off");
-// 		}
-// 	}
+// 	$(".sauces").addClass("display-off");
+// }
+
+// for (var i = 0; i<3;i++){ //i starts at 3 because the first 3 ingredients use radio buttons
+// 	(function(j){
+// 		var imgId = pizzaIngredients[j].imgId;
+// 		var imgDiv = document.getElementById(imgId);
+
+// 		var inputId = pizzaIngredients[j].inputId;
+// 		var checkBoxDiv = document.getElementById(inputId);
+
+// 		checkBoxDiv.addEventListener("click",function() {
+// 			checkSauces();
+// 			if (checkBoxDiv.checked){
+// 				imgDiv.classList.remove("display-off");
+// 			} 	
+// 		});
+// 	}(i));
+// }
 
 
-
-
-for (var i = 0; i<pizzaIngredients.length;i++){ //i starts at 3 because the first 3 ingredients use radio buttons
+for (var i = 3; i<pizzaIngredients.length;i++){ //i starts at 3 because the first 3 ingredients use radio buttons
 	(function(j){
 		var imgId = pizzaIngredients[j].imgId;
 		var imgDiv = document.getElementById(imgId);
 
-		var checkBoxId = pizzaIngredients[j].checkBoxId;
-		var checkBoxDiv = document.getElementById(checkBoxId);
+		var inputId = pizzaIngredients[j].inputId;
+		var checkBoxDiv = document.getElementById(inputId);
 		// var price = pizzaIngredients[j].price;
 
 		checkBoxDiv.addEventListener("click",function() {
@@ -202,14 +215,32 @@ for (var i = 0; i<pizzaIngredients.length;i++){ //i starts at 3 because the firs
 	//Above is a closure. Without one, the checkboxes would only be refering to the last i in the for-loop.
 }
 
-
 function calculateTotalPrice() {
 	totalPrice=0;
 	for (var i = 0; i<pizzaIngredients.length;i++){
-		var checkBoxId = pizzaIngredients[i].checkBoxId;
-		var checkBoxDiv = document.getElementById(checkBoxId);
+		var inputId = pizzaIngredients[i].inputId;
+		var checkBoxDiv = document.getElementById(inputId);
 		if (checkBoxDiv.checked) {
 			totalPrice2 +=pizzaIngredients[i].price;
 		}
 	}
 }
+
+function uncheckOnRefresh() {
+	$('input').prop('checked', false);
+	$("#tomatoSauceCheck").prop('checked', true);
+	/*the above code achieves the same thing as this code:
+		var inputs = document.getElementsByTagName('input');
+			for (i=0;i<inputs.length;i++){
+				inputs[i].checked=false;
+			}
+		document.getElementById('tomatoSauceCheck').checked=true;
+	 	document.getElementById('tomatoSauceCheck').checked="checked"; */
+}
+
+
+uncheckOnRefresh();
+//Above is needed for certain browsers to work.
+/*Thomas's Note: Without this code, if I checked off a bunch of ingredients and refreshed the page in firefox, the checkboxes would still be checked
+and the images would be gone. Most divs holding images have the display-off class which makes their display none on refresh. When the user clicks a check box, the display-off
+class is removed. Without this code, that won't happen. */
