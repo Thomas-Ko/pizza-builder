@@ -1,26 +1,28 @@
-
-var priceTotal = 9.99;
+var totalPrice = 0;
 
 var pizzaIngredients = [
   //Sauces
-	// {
-	// 	name: "Tomato Sauce",
-	// 	type: "sauce",
-	// 	imgId: "tomatoSauceImg",
-	// 	checkBoxId: "tomatoSauceCheck",
-	// },
-	// {
-	// 	name: "BBQ Sauce",
-	// 	type: "sauce",
-	// 	imgId: "bbqSauceImg",
-	// 	checkBoxId: "bbqSauceCheck",
-	// },
-	// {
-	// 	name: "Pesto Sauce",
-	// 	type: "sauce",
-	// 	imgId: "pestoSauceImg",
-	// 	checkBoxId: "pestoSauceCheck",
-	// },
+	{
+		name: "Tomato Sauce",
+		type: "sauce",
+		imgId: "tomatoSauceImg",
+		checkBoxId: "tomatoSauceCheck",
+		price:0,
+	},
+	{
+		name: "BBQ Sauce",
+		type: "sauce",
+		imgId: "bbqSauceImg",
+		checkBoxId: "bbqSauceCheck",
+		price:0,
+	},
+	{
+		name: "Pesto Sauce",
+		type: "sauce",
+		imgId: "pestoSauceImg",
+		checkBoxId: "pestoSauceCheck",
+		price:0,
+	},
   //Meat
 	{
 		name: "Pepperoni",
@@ -161,27 +163,15 @@ var pizzaIngredients = [
 	
 ];
 
-// var radios = document.forms["ingredients"].elements["sauce"];
 
-// for(var i=0; i<3; i++) {
-// 	(function(j){
-// 		var imgId = pizzaIngredients[j].imgId;
-// 		var imgDiv = document.getElementById(imgId);
+// function checkSauces() {
+// 	if(($(".sauces").hasClass("display-off"))){
+// 			$(".sauces").addClass("display-off");
+// 		}
+// 	}
 
-// 		var checkBoxId = pizzaIngredients[j].checkBoxId;
-// 		var checkBoxDiv = document.getElementById(checkBoxId);
-		
-// 		checkBoxDiv.addEventListener("click",function() {
-			
-// 			if (checkBoxDiv.checked){
-// 				imgDiv.classList.remove("display-off");
-// 			} else {
-// 				imgDiv.classList.add("display-off");
-// 			}
 
-// 		});
-// 	}(i));
-// }
+
 
 for (var i = 0; i<pizzaIngredients.length;i++){ //i starts at 3 because the first 3 ingredients use radio buttons
 	(function(j){
@@ -190,16 +180,21 @@ for (var i = 0; i<pizzaIngredients.length;i++){ //i starts at 3 because the firs
 
 		var checkBoxId = pizzaIngredients[j].checkBoxId;
 		var checkBoxDiv = document.getElementById(checkBoxId);
-		var price = pizzaIngredients[j].price;
-		
+		// var price = pizzaIngredients[j].price;
+
 		checkBoxDiv.addEventListener("click",function() {
 			
 			if (checkBoxDiv.checked){
 				imgDiv.classList.remove("display-off");
-				priceTotal += price;
+				// totalPrice += price;
 			} else {
 				imgDiv.classList.add("display-off");
-				priceTotal -= price;
+				// totalPrice -= price;
+				/* Thomas's Note: Look at the commented out code above. I was originally go to add the price of the ingredient to totalPrice each time I clicked the input. 
+				This worked fine for checkboxes. However, things got wonky when I tried to incorporate this approach to radio buttons. As a radio button isn't technically deselected
+				in the same way a checkbox is, the price would not be removed from totalPrice if I clicked another radio button. Since I was not going to show the user
+				the price of the pizza until he/she decided to complete the order, I decided to add a function (calculateTotalPrice); that fired when the user clicked on a "complete 
+				order" button which would loop through the inputs and check  if input is chcked, add price to totalPrice.  */
 			}
 
 		});
@@ -208,16 +203,13 @@ for (var i = 0; i<pizzaIngredients.length;i++){ //i starts at 3 because the firs
 }
 
 
-
-//Old Workable code
-// $("#bbqTopSauceCheck").click(function(){
-// 	$("#bbqTopSauceImg").toggleClass("display-off");
-// });
-
-// $("#hotSauceCheck").click(function(){
-// 	$("#hotSauceImg").toggleClass("display-off");
-// });
-
-// $("#ranchDressingCheck").click(function(){
-// 	$("#ranchDressingImg").toggleClass("display-off");
-// });
+function calculateTotalPrice() {
+	totalPrice=0;
+	for (var i = 0; i<pizzaIngredients.length;i++){
+		var checkBoxId = pizzaIngredients[i].checkBoxId;
+		var checkBoxDiv = document.getElementById(checkBoxId);
+		if (checkBoxDiv.checked) {
+			totalPrice2 +=pizzaIngredients[i].price;
+		}
+	}
+}
