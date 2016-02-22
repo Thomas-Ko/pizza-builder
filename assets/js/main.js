@@ -18,11 +18,29 @@ var pizzaIngredients = [
 		imgId: "chickenImg",
 		checkBoxId: "chickenCheck",
 	},
-{
+	{
 		name: "Sausage",
 		type: "meat",
 		imgId: "sausageImg",
 		checkBoxId: "sausageCheck",
+	},
+	{
+		name: "Ham",
+		type: "meat",
+		imgId: "hamImg",
+		checkBoxId: "hamCheck"
+	},
+	{
+		name: "Steak",
+		type: "meat",
+		imgId: "steakImg",
+		checkBoxId: "steakCheck",
+	},
+	{
+		name: "Bacon",
+		type: "meat",
+		imgId: "baconImg",
+		checkBoxId: "baconCheck"
 	},
   //Non-Meat Toppings
 	{
@@ -72,6 +90,12 @@ var pizzaIngredients = [
 		type: "non-meat-topping",
 		imgId: "cornImg",
 		checkBoxId: "cornCheck",
+	},	
+	{
+		name: "Pineapples",
+		type: "non-meat-topping",
+		imgId: "pineapplesImg",
+		checkBoxId: "pineapplesCheck",
 	},	
 
   //Dressings
