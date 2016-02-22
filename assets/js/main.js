@@ -1,4 +1,4 @@
-var totalPrice = 0;
+var totalPrice = 7.99;
 
 var pizzaIngredients = {
  	sauces: 	[
@@ -219,7 +219,7 @@ for (var i = 0; i<pizzaIngredients.toppings.length;i++){ //i starts at 3 because
 }
 
 function calculateTotalPrice() {
-	totalPrice=0;
+	totalPrice=7.99;
 	for (var i = 0; i<pizzaIngredients.toppings.length;i++){
 		var inputId = pizzaIngredients.toppings[i].inputId;
 		var checkBoxDiv = document.getElementById(inputId);
@@ -229,10 +229,12 @@ function calculateTotalPrice() {
 	}
 }
 
-function uncheckOnRefresh() {
-	$('input').prop('checked', false);
-	$("#tomatoSauceCheck").prop('checked', true);
-	/*the above code achieves the same thing as this code:
+//removes images, checked boxes, checked radio buttons that aren't supposed to on refresh or page load
+function defaultAppearance() {
+	$(".pizza2").not("#crustImg").not("#cheeseImg").not("#tomatoSauceImg").addClass('display-off');//add display-off class to all divs with pizza2 class except those with ids crustImg or cheeseImg or tomatoSauceImg
+	$('input').prop('checked', false); //unchecks all inputs
+	$("#tomatoSauceCheck").prop('checked', true); //checks off tomato sauce
+	/*the above 2 lines of code achieves the same thing as this code:
 		var inputs = document.getElementsByTagName('input');
 			for (i=0;i<inputs.length;i++){
 				inputs[i].checked=false;
@@ -241,7 +243,13 @@ function uncheckOnRefresh() {
 	 	document.getElementById('tomatoSauceCheck').checked="checked"; */
 }
 
-uncheckOnRefresh();
+$("#orderButton").click(function(){
+	calculateTotalPrice();
+	alert("Thanks for ordering. That will be $" + totalPrice.toFixed(2));
+	defaultAppearance();
+});
+
+defaultAppearance();
 //Above is needed for certain browsers to work.
 /*Thomas's Note: Without this code, if I checked off a bunch of ingredients and refreshed the page in firefox, the checkboxes would still be checked
 and the images would be gone. Most divs holding images have the display-off class which makes their display none on refresh. When the user clicks a check box, the display-off
