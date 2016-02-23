@@ -1,4 +1,4 @@
-var totalPrice = 7.99;
+var totalPrice = 7.99; //initial price of a cheese pizza
 
 var pizzaIngredients = {
  	sauces: 	[
@@ -166,91 +166,106 @@ var pizzaIngredients = {
 			],	
 };
 
+var radioButtonIngredients = {
+	//function used to make image when radio button is checked and other radio button images disappear
+	init: function() {
+		for (var i = 0; i<pizzaIngredients.sauces.length;i++){ //i starts at 0 and goes less than 3 because those are the radio buttons
+			(function(j){
+				var imgId = pizzaIngredients.sauces[j].imgId;
+				var imgDiv = document.getElementById(imgId);
 
-function checkSauces() {
-	$(".sauces").addClass("display-off");
-}
+				var inputId = pizzaIngredients.sauces[j].inputId;
+				var radioDiv = document.getElementById(inputId);
 
-for (var i = 0; i<pizzaIngredients.sauces.length;i++){ //i starts at 0 and goes less than 3 because those are the radio buttons
-	(function(j){
-		var imgId = pizzaIngredients.sauces[j].imgId;
-		var imgDiv = document.getElementById(imgId);
-
-		var inputId = pizzaIngredients.sauces[j].inputId;
-		var checkBoxDiv = document.getElementById(inputId);
-
-		checkBoxDiv.addEventListener("click",function() {
-			checkSauces();
-			if (checkBoxDiv.checked){
-				imgDiv.classList.remove("display-off");
-			} 	
-		});
-	}(i));
-}
-
-
-for (var i = 0; i<pizzaIngredients.toppings.length;i++){ //i starts at 3 because the first 3 ingredients use radio buttons
-	(function(j){
-		var imgId = pizzaIngredients.toppings[j].imgId;
-		var imgDiv = document.getElementById(imgId);
-
-		var inputId = pizzaIngredients.toppings[j].inputId;
-		var checkBoxDiv = document.getElementById(inputId);
-		// var price = pizzaIngredients[j].price;
-
-		checkBoxDiv.addEventListener("click",function() {
-			
-			if (checkBoxDiv.checked){
-				imgDiv.classList.remove("display-off");
-				// totalPrice += price;
-			} else {
-				imgDiv.classList.add("display-off");
-				// totalPrice -= price;
-				/* Thomas's Note: Look at the commented out code above. I was originally go to add the price of the ingredient to totalPrice each time I clicked the input. 
-				This worked fine for checkboxes. However, things got wonky when I tried to incorporate this approach to radio buttons. As a radio button isn't technically deselected
-				in the same way a checkbox is, the price would not be removed from totalPrice if I clicked another radio button. Since I was not going to show the user
-				the price of the pizza until he/she decided to complete the order, I decided to add a function (calculateTotalPrice) that fired when the user clicked on a "complete 
-				order" button which would loop through the inputs and check  if input is chcked, add price to totalPrice.  */
-			}
-
-		});
-	}(i));
-	//Above is a closure. Without one, the checkboxes would only be refering to the last i in the for-loop.
-}
-
-function calculateTotalPrice() {
-	totalPrice=7.99;
-	for (var i = 0; i<pizzaIngredients.toppings.length;i++){
-		var inputId = pizzaIngredients.toppings[i].inputId;
-		var checkBoxDiv = document.getElementById(inputId);
-		if (checkBoxDiv.checked) {
-			totalPrice +=pizzaIngredients.toppings[i].price;
+				radioDiv.addEventListener("click",function() {
+					$(".sauces").addClass("display-off");
+					if (radioDiv.checked){
+						imgDiv.classList.remove("display-off");
+					} 	
+				});
+			}(i)); //This is a closure. Without one, the checkboxes would only be refering to the last i in the for-loop.
 		}
 	}
-}
+};
 
-//removes images, checked boxes, checked radio buttons that aren't supposed to on refresh or page load
-function defaultAppearance() {
-	$(".pizza2").not("#crustImg").not("#cheeseImg").not("#tomatoSauceImg").addClass('display-off');//add display-off class to all divs with pizza2 class except those with ids crustImg or cheeseImg or tomatoSauceImg
-	$('input').prop('checked', false); //unchecks all inputs
-	$("#tomatoSauceCheck").prop('checked', true); //checks off tomato sauce
-	/*the above 2 lines of code achieves the same thing as this code:
-		var inputs = document.getElementsByTagName('input');
-			for (i=0;i<inputs.length;i++){
-				inputs[i].checked=false;
+var checkboxIngredients = {
+	//function used to make image appear or disappear when corresponding checkbox is checked or unchecked
+	init: function() {
+		for (var i = 0; i<pizzaIngredients.toppings.length;i++){ //i starts at 3 because the first 3 ingredients use radio buttons
+			(function(j){
+				var imgId = pizzaIngredients.toppings[j].imgId;
+				var imgDiv = document.getElementById(imgId);
+
+				var inputId = pizzaIngredients.toppings[j].inputId;
+				var checkBoxDiv = document.getElementById(inputId);
+				// var price = pizzaIngredients[j].price;
+
+				checkBoxDiv.addEventListener("click",function() {
+					
+					if (checkBoxDiv.checked){
+						imgDiv.classList.remove("display-off");
+						// totalPrice += price;
+					} else {
+						imgDiv.classList.add("display-off");
+						// totalPrice -= price;
+						/* Thomas's Note: Look at the commented out code above. I was originally go to add the price of the ingredient to totalPrice each time I clicked the input. 
+						This worked fine for checkboxes. However, things got wonky when I tried to incorporate this approach to radio buttons. As a radio button isn't technically deselected
+						in the same way a checkbox is, the price would not be removed from totalPrice if I clicked another radio button. Since I was not going to show the user
+						the price of the pizza until he/she decided to complete the order, I decided to add a function (calculateTotalPrice) that fired when the user clicked on a "complete 
+						order" button which would loop through the inputs and check  if input is chcked, add price to totalPrice.  */
+					}
+				});
+			}(i));
+		}
+	}	
+};
+
+//Order Button
+var orderButton = {
+	init: function(){
+		var that = this;
+		$("#orderButton").click(function(){
+		that.calculateTotalPrice();
+		alert("Thanks for ordering. That will be $" + totalPrice.toFixed(2));
+		// controller.defaultAppearance();
+		});
+	},
+	calculateTotalPrice: function(){
+		totalPrice=7.99;
+		for (var i = 0; i<pizzaIngredients.toppings.length;i++){
+			var inputId = pizzaIngredients.toppings[i].inputId;
+			var inputDiv = document.getElementById(inputId);
+			if (inputDiv.checked) {
+				totalPrice +=pizzaIngredients.toppings[i].price;
 			}
-		document.getElementById('tomatoSauceCheck').checked=true;
-	 	document.getElementById('tomatoSauceCheck').checked="checked"; */
-}
+		}
+	}
+};
 
-$("#orderButton").click(function(){
-	calculateTotalPrice();
-	alert("Thanks for ordering. That will be $" + totalPrice.toFixed(2));
-	defaultAppearance();
-});
+var main = {
+	init: function() {
+		this.defaultAppearance();
+		radioButtonIngredients.init();
+		checkboxIngredients.init();
+		orderButton.init();
+	},
+	//removes images, checked boxes, checked radio buttons that aren't supposed to on refresh or page load; needed to make certain browsers behave as intended
+		/*Without this code, if I checked off a bunch of ingredients and refreshed the page in firefox, the checkboxes would still be checked
+		and the images would be gone. Most divs holding images have the display-off class on load which makes their display none. When the user clicks a check box, 
+		the display-off class is removed. Without this code, that won't happen in firefox after a refresh; sometimes unchecking a box would've actually made the image appear.*/
+	defaultAppearance: function() {
+		$(".pizza2").not("#crustImg").not("#cheeseImg").not("#tomatoSauceImg").addClass('display-off');//add display-off class to all divs with pizza2 class except those with ids crustImg or cheeseImg or tomatoSauceImg
+		$('input').prop('checked', false); //unchecks all inputs
+		$("#tomatoSauceCheck").prop('checked', true); //checks off tomato sauce
+		/*the above 2 lines of code achieves the same thing as this code:
+			var inputs = document.getElementsByTagName('input');
+				for (i=0;i<inputs.length;i++){
+					inputs[i].checked=false;
+				}
+			document.getElementById('tomatoSauceCheck').checked=true;
+		 	document.getElementById('tomatoSauceCheck').checked="checked"; */		
+	}
+};
 
-defaultAppearance();
-//Above is needed for certain browsers to work.
-/*Thomas's Note: Without this code, if I checked off a bunch of ingredients and refreshed the page in firefox, the checkboxes would still be checked
-and the images would be gone. Most divs holding images have the display-off class which makes their display none on refresh. When the user clicks a check box, the display-off
-class is removed. Without this code, that won't happen in firefox. */
+main.init();
+
