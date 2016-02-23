@@ -5,6 +5,18 @@
 body {
 	margin: 0;
 	font-family:sans-serif;
+	background: #2a2a2a;
+	background: url("../img/blackboard.png");
+}
+
+#header-container {
+	margin:0 auto;
+	max-width:900px;
+}
+
+h1 {
+	text-align:center;
+	color: white;
 }
 
 h2 {
@@ -24,7 +36,8 @@ h2 {
 	max-width:600px;
 	position:relative;
 	width:50%;
-	background: #f2f2f2;
+	background: rgba(0,0,0,0.3);
+
 }
 
 #freepik {
@@ -50,6 +63,7 @@ form {
     flex-wrap: wrap;
     font-size:18px;
     line-height:1.5em;
+    color:#d9d9d9;
 }
 
 .pizza2{
@@ -70,13 +84,13 @@ img {
 
 #pizza-form-left {
 	width:50%;
-	background:#e6e6e6;
+	background:rgba(100, 100, 100,0.3);
 	padding:10px;
 }
 
 #pizza-form-right {
 	width:50%;
-	background:#d9d9d9;
+	background: rgba(150, 150, 150, 0.3);
 	padding:10px;
 }
 
