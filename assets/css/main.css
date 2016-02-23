@@ -1,28 +1,58 @@
+
+/*-----Imported Fonts-----*/
+
+@font-face {
+    font-family: amatic;
+    src: url("../fonts/amatic/AmaticSC-Regular.ttf") format('truetype');
+}
+
+@font-face {
+	font-family: sketchy;
+	src: url("../fonts/sketchy_ag/Sketchy.ttf") format('truetype');
+}
+
+/*----------*/
 *{
 	box-sizing: border-box;
 }
 
 body {
 	margin: 0;
-	font-family:sans-serif;
+	font-family: sketchy, sans-serif;
 	background: #2a2a2a;
 	background: url("../img/blackboard.png");
+}
+
+/*---------- HEADER ----------*/
+
+header {
+	text-align:center;
 }
 
 #header-container {
 	margin:0 auto;
 	max-width:900px;
+	padding: 10px 10px;
 }
 
 h1 {
-	text-align:center;
-	color: white;
-}
-
-h2 {
-	margin-bottom:5px;
+	color: #8bc98b;
+	font-size:75px;
+	font-family: amatic, sans-serif;
+	margin-bottom:0;
 	margin-top:20px;
 }
+
+#header-container p {
+	font-size:20px;
+	margin:0;
+	margin-bottom:10px;
+	letter-spacing: 5px;
+	color:#8bc98b;
+	opacity:0.8;
+}
+
+/*----------SECTION: PIZZA BUILDER ----------*/
 
 #pizza-builder {
 	width:100%;
@@ -30,26 +60,48 @@ h2 {
 	margin: 0 auto;
 	display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
+/*Where images are displayed*/
 #pizza-image {
 	max-width:600px;
 	position:relative;
 	width:50%;
 	background: rgba(0,0,0,0.3);
-
 }
 
+img {
+	width:100%;
+	height:auto;
+	display:block;
+}
+
+/*this class makes sure the images are stacked on top of one another */
+.pizza2{
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+/*this class is used in the main.js file to turn off the images when their corresponding input isn't checked*/
+.display-off {
+	display: none;
+}
+
+/*where attribition of images is given*/
 #freepik {
 	position:absolute;
-	left:30%;
 	bottom:20px;
+	color:#e9eeaa;
+	width:100%;
 	text-align:center;
-	font-weight:bold;
-	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}
+#freepik a {
+	color: #e9eeaa;
 }
 
-
+/*-----Form-----*/
 
 #pizza-form {
 	width:50%;
@@ -64,46 +116,76 @@ form {
     font-size:18px;
     line-height:1.5em;
     color:#d9d9d9;
+    background:rgba(100, 100, 100,0.3);
 }
 
-.pizza2{
-	position: absolute;
-	top:0;
-	left:0;
-}
-
-img {
-	width:100%;
-	height:auto;
-	display:block;
-}
-
-.display-off {
-	display: none;
+h2 {
+	font-size:40px;
+	margin-bottom:10px;
+	margin-top:20px;
+	font-family: amatic, sans-serif;
+	color: #ce9595;
 }
 
 #pizza-form-left {
 	width:50%;
-	background:rgba(100, 100, 100,0.3);
 	padding:10px;
+	padding-left:15px;
 }
 
 #pizza-form-right {
 	width:50%;
-	background: rgba(150, 150, 150, 0.3);
 	padding:10px;
 }
 
+/*-----Order Button-----*/
+button {
+    background-color: #91becc;
+    border: none;
+    color: white;
+    margin-top:15px;
+    margin-bottom:10px;
+    margin-right:10px;
+    padding: 10px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    outline:none;
+    box-shadow:  0px 0px 10px 1px rgba(0,0,0,0.4);
+}
+
+button:hover {
+	background-color:#73adbf;
+}
+
+button:active {
+	background-color:#5099af;
+}
+
+/*---------- FOOTER ----------*/
+
+footer {
+	color:white;
+	text-align:center;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+#designed-by {
+	opacity:0.5;
+}
+
+/*---------- MEDIA QUERIES----------*/
+
 @media screen and (max-width: 960px) {
-
-	#freepik {
-		left:27%;
-		bottom:15px;
-	}
-
+	
 	#pizza-image {
 		width:480px;
 		margin:0 auto;
+	}
+
+	#freepik {
+		bottom:5px;
 	}
 
 	#pizza-form {
@@ -113,10 +195,7 @@ img {
 }
 
 @media screen and (max-width: 320px) {
-	#freepik {
-		left:20%;
-		bottom:15px;
-	}
+
 	#pizza-form-left {
 		width:100%;
 	}
