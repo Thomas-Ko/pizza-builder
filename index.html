@@ -97,26 +97,27 @@
 				  	<input type="checkbox" id="bbqTopSauceCheck"> Barbecue Sauce<br>
 				  	<input type="checkbox" id="hotSauceCheck"> Hot Sauce<br>
 				  	<input type="checkbox" id="ranchDressingCheck"> Ranch Dressing<br>
-				  	<button id = "orderButton"> ORDER</button>
+				  	<button id="order"> ORDER</button>
 				 </div>
 			</form>
-
 			
 		</div>
 
-
 	</section>
-	
 
-		<a href="#openModal">Open Modal</a>
-
-		<div id="openModal" class="modalDialog">
+		<div id="confirmModal" class="modalDialog">
 			<div>
 				<h2>Ready to Order?</h2>
-				<p>The price of your pizza pie is: $10.00</p>
+				<p>The price of your pizza pie is: $ <span id="priceSpan"></span></p>
 				<!-- <p>Your order will be ready in about 15 minutes. Remember, we're a small family run restaurant so don't be petty. Tip well (or don't expect fresh ingredients next time).</p> -->
 				<a href="#cancel" title="Cancel"><button id="cancel">Cancel</button></a>
-				<button>Confirm Order</button>
+				<button id ="confirmOrder">Confirm Order</button>
+			</div>
+		</div>
+
+		<div id="thanksMessage" class="modalDialog">
+			<div>
+				<h2>Thanks for ordering!
 			</div>
 		</div>
 

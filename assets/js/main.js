@@ -224,10 +224,13 @@ var checkboxIngredients = {
 var orderButton = {
 	init: function(){
 		var that = this;
-		$("#orderButton").click(function(){
-		that.calculateTotalPrice();
-		alert("Thanks for ordering. That will be $" + totalPrice.toFixed(2));
-		// controller.defaultAppearance();
+		$("#order").click(function(event){
+			event.preventDefault();
+			that.calculateTotalPrice();
+			$("#priceSpan").text(totalPrice.toFixed(2));
+			window.location.href="#confirmModal";
+		// alert("Thanks for ordering. That will be $" + totalPrice.toFixed(2));
+			that.confirmOrder();
 		});
 	},
 	calculateTotalPrice: function(){
@@ -239,6 +242,13 @@ var orderButton = {
 				totalPrice +=pizzaIngredients.toppings[i].price;
 			}
 		}
+	},
+	//this is what happens when the user confirms the order
+	confirmOrder: function(){
+		$("#confirmOrder").click(function(){
+			main.defaultAppearance();
+			window.location.href="#";
+		});
 	}
 };
 
