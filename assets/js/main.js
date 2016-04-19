@@ -273,7 +273,8 @@ var main = {
 					inputs[i].checked=false;
 				}
 			document.getElementById('tomatoSauceCheck').checked=true;
-		 	document.getElementById('tomatoSauceCheck').checked="checked"; */		
+		 	document.getElementById('tomatoSauceCheck').checked="checked"; */	
+		 $('#tomatoSauceImg').removeClass( "display-off" );
 	}
 };
 
