@@ -271,7 +271,7 @@ footer {
 	}
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 355px) {
 
 	#pizza-form-left {
 		width:100%;
